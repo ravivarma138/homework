@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - 'master'
-      - 'logging'
+      - 'main'
     tags:
       - 'v*'
 
@@ -56,6 +56,6 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "ravivarma-ci-cd" #Must be unique in Heroku
+          heroku_app_name: "ravi-logging" #Must be unique in Heroku
           heroku_email: "ravi.varma138@gmail.com"
           usedocker: true
