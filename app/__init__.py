@@ -13,7 +13,7 @@ from flask_wtf.csrf import CSRFProtect
 
 from app.auth import auth
 from app.auth import auth
-from app.cli import create_database
+from app.cli import create_database, create_log_folder
 from app.context_processors import utility_text_processors
 from app.db import db
 from app.db.models import User
@@ -61,6 +61,7 @@ def create_app():
     db.init_app(app)
     # add command function to cli commands
     app.cli.add_command(create_database)
+    app.cli.add_command(create_log_folder)
 
     # Deactivate the default flask logger so that log messages don't get duplicated
     app.logger.removeHandler(default_handler)
@@ -130,7 +131,7 @@ def create_app():
             part = name + ': ' + str(value) + ', '
             parts.append(part)
         line = " ".join(parts)
-        #this triggers a log entry to be created with whatever is in the line variable
+        # this triggers a log entry to be created with whatever is in the line variable
         app.logger.info('this is the plain message')
 
         return response
